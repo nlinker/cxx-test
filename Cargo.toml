@@ -1,0 +1,15 @@
+[package]
+name = "cxx-test"
+version = "0.1.0"
+authors = ["Nick Linker <nlinker@gmail.com>"]
+edition = "2018"
+build = "build.rs"
+
+[lib]
+crate-type = ["rlib"]
+
+[dependencies]
+cxx = "1.0"
+
+[build-dependencies]
+cxx-build = "1.0"
