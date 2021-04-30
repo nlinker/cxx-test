@@ -1,7 +1,7 @@
 # `cxx-test` project
 
 This small project is MRE to reproduce the issue 
-[cxx #851](https://github.com/dtolnay/cxx/issues/851)
+[cxx #851](https://github.com/dtolnay/cxx/issues/855)
 
 Reproducing is easy as
 ```shell
