@@ -1,4 +1,4 @@
-# `cxx-bug` project
+# `cxx-test` project
 
 This small project is MRE to reproduce the issue 
 [cxx #851](https://github.com/dtolnay/cxx/issues/851)
