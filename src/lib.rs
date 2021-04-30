@@ -5,6 +5,12 @@ pub mod game;
 #[cxx::bridge]
 mod ffi {
 
+    #[derive(Debug, Copy, Clone)]
+    pub struct Point {
+        pub x: i32,
+        pub y: i32,
+    }
+
     unsafe extern "C++" {
         include!("cxx-test/src/lib.h");
 
@@ -12,7 +18,8 @@ mod ffi {
         pub type Game;
 
         #[namespace = "LE"]
-        type Point = crate::game::Point;
+        // type Point = crate::game::Point;
+        type Point;
 
         pub fn _shim_createGame() -> UniquePtr<Game>;
         pub fn _shim_getInts(game: Pin<&mut Game>) -> Vec<i32>;

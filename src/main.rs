@@ -4,5 +4,6 @@ fn main() {
     let game = Game::new();
     let ints = game.get_ints();
     let pts = game.get_points();
-    println!("ints = {:?}, pts = {:?}", ints, pts);
+    println!("ints = {:?}", ints);
+    println!("pts = {:?}", pts);
 }
