@@ -2,18 +2,18 @@ use crate::ffi;
 use cxx::UniquePtr;
 use std::pin::Pin;
 
-// // Mirrors its counterpart LE::Point
-// #[derive(Debug, Copy, Clone)]
-// pub struct Point {
-//     pub x: i32,
-//     pub y: i32,
-// }
-//
-// // required for ffi layer
-// unsafe impl cxx::ExternType for Point {
-//     type Id = cxx::type_id!("LE::Point");
-//     type Kind = cxx::kind::Trivial;
-// }
+// Mirrors its counterpart LE::Point
+#[derive(Debug, Copy, Clone)]
+pub struct Point {
+    pub x: i32,
+    pub y: i32,
+}
+
+// required for ffi layer
+unsafe impl cxx::ExternType for Point {
+    type Id = cxx::type_id!("LE::Point");
+    type Kind = cxx::kind::Trivial;
+}
 
 pub struct Game {
     pub(crate) raw: *mut ffi::Game,
@@ -30,8 +30,14 @@ impl Game {
         ffi::_shim_getInts(game)
     }
 
-    pub fn get_points(&self) -> Vec<ffi::Point> {
+    pub fn get_points(&self) -> Vec<Point> {
         let game = unsafe { Pin::new_unchecked(&mut *self.raw) };
-        ffi::_shim_getPoints(game)
+        let pts = ffi::_shim_getPoints(game);
+        pts.into_iter().map(|p| Point { x: p.x, y: p.y }).collect()
+    }
+
+    pub fn debug(&self) {
+        let game = unsafe { &*self.raw };
+        game.debug();
     }
 }

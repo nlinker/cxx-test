@@ -1,3 +1,4 @@
+#include <iostream>
 #include "little_engine.h"
 
 using namespace LE;
@@ -15,4 +16,8 @@ std::vector<Point> Game::getPoints() {
         Point(55, 66)
     };
     return result;
+}
+
+void Game::debug() const {
+    std::cout << "We are in debug now\n";
 }
